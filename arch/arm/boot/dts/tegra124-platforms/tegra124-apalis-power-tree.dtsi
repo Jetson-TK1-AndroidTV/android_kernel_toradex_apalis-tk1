@@ -23,8 +23,8 @@
 
 / {
 	host1x {
-		/* tegradc.1 */
-		dc@54240000 {
+		/* tegradc.0 */
+		dc@54200000 {
 			avdd_hdmi-supply = <&as3722_sd4>;
 			avdd_hdmi_pll-supply = <&avdd_hdmi_pll>;
 			vdd_hdmi_5v0-supply = <&vdd_hdmi>;

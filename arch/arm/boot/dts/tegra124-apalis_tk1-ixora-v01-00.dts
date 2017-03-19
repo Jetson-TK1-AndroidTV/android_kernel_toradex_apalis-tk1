@@ -28,7 +28,6 @@
 #include "tegra124-platforms/tegra124-apalis-fixed.dtsi"
 #include "tegra124-platforms/tegra124-laguna-hdmi-pm375-1000-a00.dtsi"
 #include "tegra124-platforms/tegra124-apalis-power-tree.dtsi"
-#include "panel-p-wuxga-10-1.dtsi"
 
 / {
 	model = "NVIDIA Tegra124 PM375";
@@ -57,27 +56,14 @@
 		dc@54200000 {
 			status = "okay";
 			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
-			nvidia,emc-clk-rate = <204000000>;
-			nvidia,cmu-enable = <1>;
-			nvidia,low-v-win = <0x2>;
-			nvidia,fb-bpp = <32>; /* bits per pixel */
-			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
-		};
-		/* tegradc.1 */
-		dc@54240000 {
-			status = "okay";
-			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 			nvidia,emc-clk-rate = <300000000>;
+			nvidia,cmu-enable = <1>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 		};
-		dsi {
-			nvidia,dsi-controller-vs = <1>;
-			status = "okay";
-			panel-p-wuxga-10-1 {
-				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
-				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(H, 3) 0>; /* PH3 */
-				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(H, 1) 0>; /* PH1 */
+		hdmi {
+			hdmi-display {
+				nvidia,hdmi-vrr-caps = <1>;
 			};
 		};
 	};
@@ -213,7 +199,7 @@
 		avddio-pex-supply = <&as3722_sd4>;
 		avdd-pex-pll-supply = <&as3722_sd4>;
 		vddio-pex-ctl-supply = <&as3722_sd4>;
-		nvidia,lane-map = <0x12>;
+		nvidia,lane-map = <0x10>;
 		status = "okay";
 		pci@1,0 {
 			nvidia,disable-clock-request;
