@@ -150,10 +150,10 @@
 		  };
 	  };
 		/* USBO1_EN */
-		reg_usbo1_vbus: regulator@4 {
+		usb0_vbus: regulator@4 {
 			compatible = "regulator-fixed-sync";
 			reg = <4>;
-			regulator-name = "VCC_USBO1";
+			regulator-name = "usb0-vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 			gpio = <&gpio TEGRA_GPIO(N, 4) 0>;
@@ -176,10 +176,10 @@
 		};
 
 		/* USBH_EN */
-		reg_usbh_vbus: regulator@5 {
+		usb1_usb2_vbus: regulator@5 {
 			compatible = "regulator-fixed-sync";
 			reg = <5>;
-			regulator-name = "VCC_USBH(2A|2C|2D|3|4)";
+			regulator-name = "usb1-usb2-vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 			gpio = <&gpio TEGRA_GPIO(N, 5) 0>;
