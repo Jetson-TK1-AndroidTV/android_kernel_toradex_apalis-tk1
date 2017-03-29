@@ -104,7 +104,7 @@
 			};
 		};
 	};
-	hdmi_ddc: i2c@7000c400 {
+	hdmi_ddc: i2c@7000c700 {
 		clock-frequency = <100000>;
 	};
 };
