@@ -92,6 +92,22 @@
                 };
         };
 
+	bcmdhd_wlan {
+		edp-consumer-name = "primary-wifi";
+	};
+
+	bcmdhd_wlan {
+		fw_path = "/system/vendor/firmware/fw_bcmdhd.bin";
+		nv_path = "/system/etc/nvram_apalis-tk1_4356.txt";
+		country_code_map {
+			CC1 {
+				iso_abbrev = "XR";
+				custom_locale = "XR";
+				custom_locale_rev = <122>;
+			};
+		};
+	};
+
 	/* Apalis UART1 */
 	serial@70006000 {
 		compatible = "nvidia,tegra114-uart", "nvidia,tegra20-uart";
@@ -199,7 +215,7 @@
 		avddio-pex-supply = <&as3722_sd4>;
 		avdd-pex-pll-supply = <&as3722_sd4>;
 		vddio-pex-ctl-supply = <&as3722_sd4>;
-		nvidia,lane-map = <0x10>;
+		nvidia,lane-map = <0x14>;
 		status = "okay";
 		pci@1,0 {
 			nvidia,disable-clock-request;
