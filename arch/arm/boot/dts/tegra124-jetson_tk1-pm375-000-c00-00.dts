@@ -27,6 +27,7 @@
 #include "tegra124-platforms/tegra124-jetson-power-tree-pm375-0000-c00.dtsi"
 #include "tegra124-platforms/tegra124-laguna-hdmi-pm375-1000-a00.dtsi"
 #include "tegra124-platforms/tegra124-jetson_tk1-io-common.dtsi"
+#include "tegra124-platforms/tegra124-bcm4356-comms.dtsi"
 
 / {
 	model = "NVIDIA Tegra124 PM375";
@@ -115,6 +116,22 @@
 		as3722@40 {
 			adc_extcon {
 				ams,extcon-name = "as3722-extcon";
+			};
+		};
+	};
+
+	bcmdhd_wlan {
+		edp-consumer-name = "primary-wifi";
+	};
+
+	bcmdhd_wlan {
+		fw_path = "/system/vendor/firmware/fw_bcmdhd.bin";
+		nv_path = "/system/etc/nvram_apalis-tk1_4356.txt";
+		country_code_map {
+			CC1 {
+				iso_abbrev = "XR";
+				custom_locale = "XR";
+				custom_locale_rev = <122>;
 			};
 		};
 	};
