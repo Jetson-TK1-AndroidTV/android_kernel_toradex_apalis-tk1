@@ -40,6 +40,10 @@
 		vpp_fuse-supply = <&as3722_ldo11>;
 	};
 
+	power-detect {
+		pwrdet-pex-ctl-supply = <&as3722_sd4>;
+	};
+
 	udc@7d000000 {
 		avdd_usb-supply = <&as3722_sd4>;
 		avdd_pll_utmip-supply = <&as3722_sd5>;

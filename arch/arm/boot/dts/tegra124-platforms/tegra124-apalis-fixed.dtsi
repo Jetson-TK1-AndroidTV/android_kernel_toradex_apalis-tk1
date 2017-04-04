@@ -84,44 +84,33 @@
 					regulator-consumer-supply = "pwrdet_hv";
 				};
 				c8 {
-					regulator-consumer-supply = "hvdd_sata";
-				};
-				c9 {
-					regulator-consumer-supply = "hvdd_pex";
-					regulator-consumer-device = "tegra-pcie";
-				};
-				c10 {
-					regulator-consumer-supply = "hvdd_pex_pll";
-					regulator-consumer-device = "tegra-pcie";
-				};
-				c11 {
 					regulator-consumer-supply = "vdd_sys_cam_3v3";
 				};
-				c12 {
+				c9 {
 					regulator-consumer-supply = "VDDA";
 					regulator-consumer-device = "4-000a";
 				};
-				c13 {
+				c10 {
 					regulator-consumer-supply = "vddio_sd_slot";
 					regulator-consumer-device = "sdhci-tegra.0";
 				};
-				c14 {
+				c11 {
 					regulator-consumer-supply = "vddio_sd_slot";
 					regulator-consumer-device = "sdhci-tegra.2";
 				};
-				c15 {
+				c12 {
 					regulator-consumer-supply = "vdd_3v3_sensor";
 				};
-				c16 {
+				c13 {
 					regulator-consumer-supply = "vdd_kp_3v3";
 				};
-				c17 {
+				c14 {
 					regulator-consumer-supply = "vdd_tp_3v3";
 				};
-				c18 {
+				c15 {
 					regulator-consumer-supply = "vdd_dtv_3v3";
 				};
-				c19 {
+				c16 {
 					regulator-consumer-supply = "vdd";
 					regulator-consumer-device = "4-004c";
 				};
@@ -205,9 +194,29 @@
 			};
 		};
 
-		vdd_lcd_bl_en: regulator@6 {
-			compatible = "regulator-fixed-sync";
+		reg_3v3_supply: regulator@6 {
+			compatible = "regulator-fixed";
 			reg = <6>;
+			regulator-name = "reg-3v3-supply";
+			regulator-min-microvolt = <3300000>;
+			regulator-max-microvolt = <3300000>;
+
+			consumers {
+				c1 {
+					regulator-consumer-supply = "hvdd_pex";
+				};
+				c2 {
+					regulator-consumer-supply = "hvdd_pex_pll";
+				};
+				c3 {
+					regulator-consumer-supply = "hvdd_sata";
+				};
+			};
+		};
+
+		vdd_lcd_bl_en: regulator@7 {
+			compatible = "regulator-fixed-sync";
+			reg = <7>;
 			regulator-name = "BKL1_ON";
 			regulator-min-microvolt = <3300000>;
 			regulator-max-microvolt = <3300000>;
