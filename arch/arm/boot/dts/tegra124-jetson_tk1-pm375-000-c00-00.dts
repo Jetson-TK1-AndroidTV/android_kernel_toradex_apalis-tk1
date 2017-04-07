@@ -27,7 +27,6 @@
 #include "tegra124-platforms/tegra124-jetson-power-tree-pm375-0000-c00.dtsi"
 #include "tegra124-platforms/tegra124-laguna-hdmi-pm375-1000-a00.dtsi"
 #include "tegra124-platforms/tegra124-jetson_tk1-io-common.dtsi"
-#include "tegra124-platforms/tegra124-bcm4356-comms.dtsi"
 
 / {
 	model = "NVIDIA Tegra124 PM375";
@@ -100,6 +99,7 @@
 
         serial@70006200 {
                 compatible = "nvidia,tegra114-hsuart";
+		dma-names = "tx";
                 status = "okay";
         };
 
@@ -126,7 +126,7 @@
 
 	bcmdhd_wlan {
 		fw_path = "/system/vendor/firmware/fw_bcmdhd.bin";
-		nv_path = "/system/etc/nvram_apalis-tk1_4356.txt";
+		nv_path = "/system/etc/nvram.txt";
 		country_code_map {
 			CC1 {
 				iso_abbrev = "XR";
@@ -135,6 +135,17 @@
 			};
 		};
 	};
+
+	bluedroid_pm {
+		compatible = "nvidia,tegra-bluedroid_pm";
+		id = <0>;
+		bluedroid_pm,reset-gpio = <&gpio TEGRA_GPIO(X, 1) 0>;
+		bluedroid_pm,shutdown-gpio = <&gpio TEGRA_GPIO(R, 1) 0>;
+		bluedroid_pm,host-wake-gpio = <&gpio TEGRA_GPIO(U, 6) 0>;
+		bluedroid_pm,ext-wake-gpio = <&gpio TEGRA_GPIO(EE, 1) 0>;
+		interrupt-parent = <&gpio>;
+		interrupts = <166 0x01>;
+        };
 
 	memory@0x80000000 {
 		device_type = "memory";

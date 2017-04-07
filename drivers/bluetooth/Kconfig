@@ -117,6 +117,20 @@ config BT_BLUESLEEP
           Say Y here to compile support for bluesleep support into the kernel
           or say M to compile it as module (bluesleep).
 
+config BCM_BT_LPM
+	tristate "Broadcom Bluetooth Low Power Mode"
+	depends on SERIAL_MFD_HSU || SERIAL_MFD_HSU_EXT
+	default n
+	help
+	   Select this module for Broadcom Bluetooth low power management.
+
+config BCM_BT_LPM_DBG
+	bool "Set this flag to disable LPM, for debug purpose."
+	depends on BCM_BT_LPM
+	default n
+	help
+	   Set this flag to disable LPM, for debug purpose.
+
 config BT_HCIBPA10X
 	tristate "HCI BPA10x USB driver"
 	depends on USB
